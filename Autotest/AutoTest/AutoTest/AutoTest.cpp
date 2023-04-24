@@ -1,23 +1,67 @@
-// AutoTest.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
-//
-
 #include <iostream>
-#include<Auto.h>
+#include "Auto.h"
+
 using namespace std;
 
-int main()
-{
-    int test = Auto::test::test();
-    cout << test << endl;
+int main() {
+
+    // Instanziierung auf dem Stack
+    Auto auto1;
+    cout << "Instanz auf dem Stack: " << auto1.getFarbe() << endl;
+
+    // Instanziierung im Datensegment
+    static Auto auto2(4, "rot", 100, 4, 9.5, 40.0, 40.0);
+    cout << "Instanz im Datensegment: " << auto2.getFarbe() << endl;
+
+    // Instanziierung auf dem Heap
+    Auto* auto3 = new Auto(2, "blau", 80, 2, 6.5, 20.0, 30.0);
+    cout << "Instanz auf dem Heap: " << auto3->getFarbe() << endl;
+
+    
+
+    // Testen der Methoden
+    float strecke = 100;
+    cout << "Wieviel KM soll das Auto fahren?";
+    cin >> strecke;
+    cout << "Gefahrene Strecke: " << auto1.fahren(strecke) << endl;
+    cout << "Tankinhalt vor dem Tanken: " << auto1.getTankinhalt() << endl;
+    auto1.tanken(0.00001);
+    cout << "Tankinhalt nach dem Tanken: " << auto1.getTankinhalt() << endl;
+
+    delete auto3; // Heap-Speicher freigeben
+
+    // Selbst werte zuweisen
+    int a = 0;
+    string b = "";
+    int c = 0;
+    int d = 0;
+    float e = 0.0f;
+    float f = 0.0f;
+    float g = 0.0f;
+
+    cout << "Welche Radzahl hat dein Auto?";
+    cin >> a;
+    cout << "Welche Farbe hat dein Auto?";
+    cin >> b;
+    cout << "Wieviel PS hat dein Auto?";
+    cin >> c;
+    cout << "Wieviele Sitze hat dein Auto?";
+    cin >> d;
+    cout << "Wie hoch ist der Spritverbrauch bei deinem Auto?";
+    cin >> e;
+    cout << "Wie ist der max Tankfuellstand bei deinem Auto?";
+    cin >> f;
+    g = f;
+
+    Auto* auto4 = new Auto(a, b, c, d, e, f, g);
+    cout << "Wieviel KM soll das Auto fahren?";
+    cin >> strecke;
+    cout << "Gefahrene Strecke: " << auto4->fahren(strecke) << endl;
+    cout << "Tankinhalt vor dem Tanken: " << auto4->getTankinhalt() << endl;
+    auto4->tanken(0.00001);
+    cout << "Tankinhalt nach dem Tanken: " << auto4->getTankinhalt() << endl;
+
+    delete auto4; // Heap-Speicher freigeben
+
+    return 0;
 }
-
-// Programm ausführen: STRG+F5 oder Menüeintrag "Debuggen" > "Starten ohne Debuggen starten"
-// Programm debuggen: F5 oder "Debuggen" > Menü "Debuggen starten"
-
-// Tipps für den Einstieg: 
-//   1. Verwenden Sie das Projektmappen-Explorer-Fenster zum Hinzufügen/Verwalten von Dateien.
-//   2. Verwenden Sie das Team Explorer-Fenster zum Herstellen einer Verbindung mit der Quellcodeverwaltung.
-//   3. Verwenden Sie das Ausgabefenster, um die Buildausgabe und andere Nachrichten anzuzeigen.
-//   4. Verwenden Sie das Fenster "Fehlerliste", um Fehler anzuzeigen.
-//   5. Wechseln Sie zu "Projekt" > "Neues Element hinzufügen", um neue Codedateien zu erstellen, bzw. zu "Projekt" > "Vorhandenes Element hinzufügen", um dem Projekt vorhandene Codedateien hinzuzufügen.
-//   6. Um dieses Projekt später erneut zu öffnen, wechseln Sie zu "Datei" > "Öffnen" > "Projekt", und wählen Sie die SLN-Datei aus.
