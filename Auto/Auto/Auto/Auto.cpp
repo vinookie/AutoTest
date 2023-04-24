@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Auto.h"
 
+//Auto mit festen Werten
 Auto::Auto() :
     radzahl(4),
     farbe("weiss"),
@@ -10,7 +11,7 @@ Auto::Auto() :
     tankgroesse(50.0),
     tankinhalt(50.0)
 {}
-
+//Auto mit erwarteten übergabeparametern
 Auto::Auto(int r, std::string f, int p, int a, float s, float t, float g) :
     radzahl(r),
     farbe(f),
@@ -21,6 +22,10 @@ Auto::Auto(int r, std::string f, int p, int a, float s, float t, float g) :
     tankinhalt(t)
 {}
 
+//Die gezeigten Zeilen definieren einen Kopierkonstruktor für die Klasse "Auto".
+// Ein Kopierkonstruktor ist eine spezielle Funktion, die ein Objekt 
+//derselben Klasse als Argument akzeptiert und ein neues Objekt derselben Klasse erstellt, 
+//das eine Kopie des Argument - Objekts ist.
 Auto::Auto(const Auto& other) :
     radzahl(other.radzahl),
     farbe(other.farbe),
@@ -31,8 +36,12 @@ Auto::Auto(const Auto& other) :
     tankinhalt(other.tankinhalt)
 {}
 
+
+// Ausführen des Destruktors
 Auto::~Auto() {}
 
+
+// Verbrauch auf 100km gerechnet -> berechnung des tankinhalts
 float Auto::fahren(float strecke) {
     float verbrauch = strecke * spritverbrauch / 100.0;
     if (verbrauch > tankinhalt) {
@@ -46,6 +55,8 @@ float Auto::fahren(float strecke) {
     }
 }
 
+
+//verschiedene Getter werden ausgeführt
 int Auto::getRadzahl() const {
     return radzahl;
 }

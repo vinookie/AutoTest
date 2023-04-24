@@ -61,7 +61,31 @@ int main() {
     auto4->tanken(0.00001);
     cout << "Tankinhalt nach dem Tanken: " << auto4->getTankinhalt() << endl;
 
-    delete auto4; // Heap-Speicher freigeben
+
+    // Testen der setFarbe-Methode
+ 
+    cout << "Neue Farbe: " << auto4->getFarbe() << endl;
+
+    // Testen der setTankinhalt-Methode
+    
+    cout << "Neuer Tankinhalt: " << auto4->getTankinhalt() << endl;
+
+    // Testen der Kopierkonstruktor-Methode
+    Auto auto5 = auto2;
+    cout << "Kopie der Instanz im Datensegment: " << auto5.getFarbe() << endl;
+
+    // Testen der Getter-Methoden
+    cout << "Radzahl: " << auto4->getRadzahl() << endl;
+    cout << "PS: " << auto4->getPS() << endl;
+    cout << "Anzahl Sitze: " << auto4->getAnzahlSitze() << endl;
+    cout << "Spritverbrauch: " << auto4->getSpritverbrauch() << endl;
+    cout << "Tankgröße: " << auto4->getTankgroesse() << endl;
+    cout << "Tankinhalt: " << auto4->getTankinhalt() << endl;
+
+    // Heap-Speicher freigeben
+    delete auto4;
+
+   
 
     return 0;
 }
